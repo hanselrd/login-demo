@@ -35,8 +35,8 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit() {
     if (this.authService.login(this.email.value, this.password.value)) {
-      let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
-      this.router.navigate([returnUrl || '']);
+      let cbUrl = this.route.snapshot.queryParamMap.get('cbUrl');
+      this.router.navigate([cbUrl || '']);
     } else {
       alert('Login failed');
     }
