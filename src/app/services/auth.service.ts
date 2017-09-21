@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   isLoggedIn() {
     let user = localStorage.getItem('login-demo');
@@ -19,13 +20,14 @@ export class AuthService {
   logout() {
     if (!this.isLoggedIn()) return false;
     localStorage.removeItem('login-demo');
+    this.router.navigate(['login']);
     return true;
   }
 
   get currentUser() {
     let user = localStorage.getItem('login-demo');
     let split = user.split(':');
-    return split[0];
+    return { name: split[0] };
   }
 
 }
