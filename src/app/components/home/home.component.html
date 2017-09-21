@@ -1,1 +1,6 @@
-<p>You are authenticated</p>
+<p *ngIf="authService.isLoggedIn()">
+  Welcome {{ authService.currentUser.name }}
+</p>
+<div *ngIf="authService.isLoggedIn()">
+  <button class="btn btn-danger" (click)="authService.logout()">Logout</button>
+</div>
